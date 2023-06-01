@@ -1,5 +1,5 @@
 {% set name = "tethys-platform" %}
-{% set version = "4.1.0" %}
+{% set version = "4.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/tethysplatform/tethys/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 466cd13770c6660f7b5e460daaf6e96fcba5d92cedcd93af8e0ccb9e6ee36406
+  sha256: 06537f1ef53a7ff85cc364b02a620cef04d8745a2938eeb0f51ef1fe468d2cc9
 
 build:
   noarch: python
@@ -15,8 +15,8 @@ build:
   entry_points:
     - tethys = tethys_cli:tethys_command
   script_env:
-    - SETUPTOOLS_SCM_PRETEND_VERSION={{version}}
-  script: "{{ PYTHON }} -m pip install . -vv"
+    - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
