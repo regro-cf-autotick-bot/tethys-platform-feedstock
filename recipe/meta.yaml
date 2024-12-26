@@ -1,5 +1,5 @@
 {% set name = "tethys-platform" %}
-{% set version = "4.3.2" %}
+{% set version = "4.3.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/tethysplatform/tethys/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 875ff1977c1dc37da31bcff1906d89d04fde45d7664252b0cb8655f18bbec35e
+  sha256: 15f03c770413003b308d96f30dd2c3a3b5ee4a0e3b905c0589effb02c0a9ffa0
 
 build:
   noarch: python
@@ -20,12 +20,12 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
     - setuptools
     - setuptools_scm
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - django >=3.2,<6
     - channels
     - daphne
@@ -46,7 +46,7 @@ requirements:
     - django-mfa2
     - django-recaptcha
     - social-auth-app-django
-    - hs_restclient 
+    - hs_restclient
     - python-jose
     - django-oauth-toolkit
     - arrow
@@ -60,7 +60,7 @@ requirements:
     - conda
     - conda-libmamba-solver
     - postgresql
-    - psycopg2 
+    - psycopg2
     - sqlalchemy =1.*
     - geoalchemy2
     - plotly
@@ -69,11 +69,12 @@ requirements:
     - condorpy
     - tethys_dask_scheduler >=1.0.2
     - tethys_dataset_services >=2.0.0
-    - owslib 
+    - owslib
     - siphon
 
 test:
   requires:
+    - python {{ python_min }}
     - pip
   imports:
     - tethys_apps
