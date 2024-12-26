@@ -20,12 +20,12 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
     - setuptools
     - setuptools_scm
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - django >=3.2,<6
     - channels
     - daphne
@@ -74,6 +74,7 @@ requirements:
 
 test:
   requires:
+    - python {{ python_min }}
     - pip
   imports:
     - tethys_apps
